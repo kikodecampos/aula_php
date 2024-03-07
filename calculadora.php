@@ -1,5 +1,7 @@
 <?php
 
+// SISTEMA DE CALCULADORA EM PHP
+
 // PEGAR VARIÁVEIS VINDA NA URL
 // $variaveis = $_GET;
 
