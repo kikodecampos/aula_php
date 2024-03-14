@@ -1,7 +1,5 @@
 <?php
-
 $numero = $_POST["numero"] ?? 0;
-
 ?>
 
 <!DOCTYPE html>
