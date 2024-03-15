@@ -8,7 +8,7 @@ $numero = $_POST["numero"] ?? 0;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laço Repetição WHILE</title>
+    <title>Tabuada</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
@@ -20,7 +20,7 @@ $numero = $_POST["numero"] ?? 0;
                 <form method="post">
                     <div class="card">
                         <div class="card-header">
-                            Laço While
+                            Tabuada
                         </div>
                         <div class="card-body">
                             <input name="numero" class="form-control" value="<?php echo $numero?>">
@@ -37,20 +37,16 @@ $numero = $_POST["numero"] ?? 0;
                         Resultado
                     </div>
                     <div class="card-body">
-                        <p>
-                        <?php    
-                        $numeros = "";
-                        
-                        $contador = 1;
-                        
-                        while($contador <= $numero) {
-                            $numeros.= $contador . " - ";
-                            $contador++;
+                        <?php 
+                        if($numero != 0) {
+
+                            echo "<h4>Tabuada do $numero </h4>";
+
+                            for($i=1;$i<=10;$i++) {
+                                echo "$numero x $i = " . $numero*$i . "<br>";
+                            }
                         }
-                        
-                        echo substr($numeros,0,-2);
                         ?>
-                        </p>
                     </div>
                 </div>
             </div>
