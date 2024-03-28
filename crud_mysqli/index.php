@@ -17,9 +17,9 @@
                 <div class="card">
                     <div class="card-header">
                         Lista de Clientes
-                        <button class="btn btn-primary btn-sm float-end">
+                        <a href="form.php" class="btn btn-primary btn-sm float-end">
                             <i class="bi bi-plus-lg"></i> Novo
-                        </button>
+                        </a>
                     </div>
                     <div class="card-body">
                         <table class="table table-hover align-middle">
@@ -48,54 +48,35 @@
                                     while($row = mysqli_fetch_object($query)) {
                                         echo '
                                         <tr>
-                                        <td class="text-center"></td>
-                                        <td></td>
-                                        <td class="text-center"></td>
-                                        <td class="text-center"></td>
+                                            <td class="text-center">'.$row->pk_cliente.'</td>
+                                            <td>'.$row->nome.'</td>
+                                            <td class="text-center">'.$row->cpf.'</td>
+                                            <td class="text-center">
+                                                <div class="dropdown">
+                                                    <button class="btn btn-info btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <i class="bi bi-gear"></i>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a class="dropdown-item" href="form.php?ref='.base64_encode($row->pk_cliente).'"><i class="bi bi-pencil"></i> Editar</a></li>
+                                                        <li>
+                                                            <a class="dropdown-item" 
+                                                            onclick="
+                                                                if(confirm(\'Deseja realmente remover este registro?\')) { 
+                                                                    window.location=\'remover.php?ref='.base64_encode($row->pk_cliente).'\'
+                                                                }
+                                                            "
+                                                            href="#">
+                                                                <i class="bi bi-trash"></i> Remover
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </td>
                                         </tr>
                                         ';
                                     }
                                 }
                                 ?>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>Glauco Luiz</td>
-                                    <td>
-                                        Manutenção de micro<br>
-                                        Configuração de roteador
-                                    </td>
-                                    <td class="text-center">R$ 500,00</td>
-                                    <td class="text-center">
-                                        <div class="dropdown">
-                                            <button class="btn btn-info btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="bi bi-gear"></i>
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#"><i class="bi bi-pencil"></i> Editar</a></li>
-                                                <li><a class="dropdown-item" href="#"><i class="bi bi-trash"></i> Remover</a></li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">2</td>
-                                    <td>Glauco Santos</td>
-                                    <td>
-                                        Instalação de software
-                                    </td>
-                                    <td class="text-center">R$ 100,00</td>
-                                    <td class="text-center">
-                                        <div class="dropdown">
-                                            <button class="btn btn-info btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="bi bi-gear"></i>
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#"><i class="bi bi-pencil"></i> Editar</a></li>
-                                                <li><a class="dropdown-item" href="#"><i class="bi bi-trash"></i> Remover</a></li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -104,8 +85,8 @@
         </div>
     </div>
 
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
 </body>
 
 </html>
