@@ -1,5 +1,7 @@
 <?php
 
+include("../verificar_autenticidade.php");
+
 // VERIFICA SE ESTÁ VINDO DADOS VIA POST
 if ($_POST) {
     // PEGAR INFORMAÇÕES VINDAS DO FORMULÁRIO
@@ -24,10 +26,21 @@ if ($_POST) {
     include('../conexao_mysqli.php');
 
     // MONTAR A SINTAXE SQL QUE O PHP VAI ENVIAR AO MYSQL
-    $sql = "
-    INSERT INTO clientes (nome, cpf, whatsapp, email) VALUES
-    ('$nome', '$cpf', '$whatsapp', '$email')
-    ";
+    if($pk_cliente > 0) {
+        $sql = "
+        UPDATE clientes SET 
+        nome = '$nome',
+        cpf = '$cpf',
+        whatsapp = '$whatsapp',
+        email = '$email'
+        WHERE pk_cliente = '$pk_cliente'
+        ";
+    } else {
+        $sql = "
+        INSERT INTO clientes (nome, cpf, whatsapp, email) VALUES
+        ('$nome', '$cpf', '$whatsapp', '$email')
+        ";
+    }
 
     // ENVIAR A SINTAXE SQL AO MYSQL
     $query = mysqli_query($conn, $sql);
