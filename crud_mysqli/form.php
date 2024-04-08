@@ -1,5 +1,4 @@
 <?php
-
 include("../verificar_autenticidade.php");
 
 $pk_cliente = "";
