@@ -87,7 +87,7 @@ if (isset($_GET['ref'])) {
                             </div>
                         </div>
                         <div class="card-footer text-end">
-                            <button type="button" class="btn btn-outline-danger"><i class="bi bi-arrow-left"></i></button>
+                            <a href="./" class="btn btn-outline-danger"><i class="bi bi-arrow-left"></i></button>
                             <button type="submit" class="btn btn-primary"><i class="bi bi-floppy"></i></button>
                         </div>
                     </div>

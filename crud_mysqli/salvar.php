@@ -26,7 +26,7 @@ if ($_POST) {
     include('../conexao_mysqli.php');
 
     // MONTAR A SINTAXE SQL QUE O PHP VAI ENVIAR AO MYSQL
-    if($pk_cliente > 0) {
+    if ($pk_cliente > 0) {
         $sql = "
         UPDATE clientes SET 
         nome = '$nome',
@@ -42,8 +42,21 @@ if ($_POST) {
         ";
     }
 
-    // ENVIAR A SINTAXE SQL AO MYSQL
-    $query = mysqli_query($conn, $sql);
+    try {
+        // ENVIAR A SINTAXE SQL AO MYSQL
+        $query = mysqli_query($conn, $sql);
+    } catch (Exception $e) {
+        if (mysqli_errno($conn) == 1062) {
+            $msg = "Campo CPF, E-mail e/ou Whatsapp já cadastrado.";
+        }
+        echo "
+        <script>
+            alert('$msg');
+            window.location='./';
+        </script>
+        ";
+        exit;
+    }
 
     // VERIFICA SE CADASTROU CORRETAMENTE
     if ($query) {

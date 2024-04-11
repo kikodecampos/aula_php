@@ -71,16 +71,12 @@ include("../verificar_autenticidade.php");
                                             <td class="text-center">' . $row->pk_cliente . '</td>
                                             <td>' . $row->nome . '</td>
                                             <td class="text-center">' . $row->cpf . '</td>
-                                            <td class="text-center">'.$row->pk_cliente.'</td>
-                                            <td>'.$row->nome.'</td>
-                                            <td class="text-center">'.$row->cpf.'</td>
                                             <td class="text-center">
                                                 <div class="dropdown">
                                                     <button class="btn btn-info btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                         <i class="bi bi-gear"></i>
                                                     </button>
                                                     <ul class="dropdown-menu">
-                                                        <li><a class="dropdown-item" href="form.php?ref=' . base64_encode($row->pk_cliente) . '"><i class="bi bi-pencil"></i> Editar</a></li>
                                                         <li><a class="dropdown-item" href="form.php?ref='.base64_encode($row->pk_cliente).'"><i class="bi bi-pencil"></i> Editar</a></li>
                                                         <li>
                                                             <a class="dropdown-item" 
